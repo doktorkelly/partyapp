@@ -8,7 +8,7 @@ namespace PartyApp.Services
 {
     public class IssueServiceInMemory : IIssueService
     {
-        private static readonly IEnumerable<Issue> IssueList = new List<Issue>() {
+        private readonly IEnumerable<Issue> IssueList = new List<Issue>() {
             new Issue(1, "issue01", "desc01", "cat1"),
             new Issue(2, "issue02", "desc02", "cat1"),
             new Issue(3, "issue03", "desc03", "cat1"),

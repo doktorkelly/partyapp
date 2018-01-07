@@ -8,7 +8,7 @@ namespace PartyApp.Services
 {
     public class PositionServiceInMemory : IPositionService
     {
-        private static readonly IList<Position> Positions = new List<Position>()
+        private readonly IList<Position> Positions = new List<Position>()
         {
             //user has id 0:
             new Position(0, 1, 0, 0),

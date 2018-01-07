@@ -23,8 +23,8 @@ namespace PartyApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<IIssueService, IssueServiceInMemory>();
-            services.AddScoped<IPositionService, PositionServiceInMemory>();
+            services.AddSingleton<IIssueService, IssueServiceInMemory>();
+            services.AddSingleton<IPositionService, PositionServiceInMemory>();
             //services.AddSwaggerGen(c => {
             //    c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             //});
