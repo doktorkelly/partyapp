@@ -58,7 +58,7 @@ namespace PartyApp.Controllers
             if (ModelState.IsValid) {
                 try {
                     Position pos = ToPosition(issuePos, MyUserId);
-                    bool ok = PositionService.Update(pos);
+                    bool ok = PositionService.AddOrUpdate(pos);
                     return RedirectToAction(nameof(Index));
                 }
                 catch {

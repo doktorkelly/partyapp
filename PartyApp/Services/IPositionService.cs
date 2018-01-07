@@ -12,6 +12,7 @@ namespace PartyApp.Services
         Position FindByUserIssue(int userId, int issueId);
         bool Update(Position pos);
         bool Add(Position pos);
+        bool AddOrUpdate(Position pos);
         bool Delete(int userId, int issueId);
     }
 }

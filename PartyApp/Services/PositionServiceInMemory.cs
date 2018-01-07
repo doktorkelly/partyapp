@@ -53,9 +53,17 @@ namespace PartyApp.Services
             return position;
         }
 
+        private Position FindByUserIssue(Position pos)
+        {
+            if (pos != null) {
+                return Positions.FirstOrDefault(p => p.UserId == pos.UserId && p.IssueId == pos.IssueId);
+            }
+            return null;
+        }
+
         public bool Add(Position pos)
         {
-            if (! Positions.Any(p => p.UserId == pos.UserId && p.IssueId == pos.IssueId)) {
+            if (pos != null && FindByUserIssue(pos) == null) {
                 Positions.Add(pos);
                 return true;
             }
@@ -64,15 +72,24 @@ namespace PartyApp.Services
 
         public bool Update(Position pos)
         {
-            Position posInList = Positions
-                .FirstOrDefault(p => p.UserId == pos.UserId && p.IssueId == pos.IssueId);
-            if (posInList != null) {
-                posInList = pos;
-                return true;
+            if (pos != null) {
+                Position posInList = FindByUserIssue(pos.UserId, pos.IssueId);
+                if (posInList != null) {
+                    posInList.ConsentLevel = pos.ConsentLevel;
+                    posInList.Weight = pos.Weight;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool AddOrUpdate(Position pos)
+        {
+            if (FindByUserIssue(pos) != null) {
+                return Update(pos);
             }
             else {
-                Positions.Add(pos);
-                return true;
+                return Add(pos);
             }
         }
 
