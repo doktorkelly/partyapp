@@ -1,0 +1,48 @@
+﻿@model PartyApp.Models.IssuePosition
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>IssuePosition</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IssueId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsentLevel) [-5...5]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConsentLevel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)  [0...5]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit"asp-route-id="@Model.IssueId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

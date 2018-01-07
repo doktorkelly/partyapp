@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PartyApp.Models.IssuePosition>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Consent</th>
+            <th>Weight</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueId)
+            </td>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.Title) *@
+                <a asp-action="Details" asp-route-id="@item.IssueId">@item.Title</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsentLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IssueId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
